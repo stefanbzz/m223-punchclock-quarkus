@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import ch.zli.m223.punchclock.domain.Entry;
 
 @ApplicationScoped
@@ -20,6 +22,13 @@ public class EntryService {
     @Transactional 
     public Entry createEntry(Entry entry) {
         entityManager.persist(entry);
+        return entry;
+    }
+
+    @Transactional 
+    public Entry deleteEntry(long id) {
+        Entry entry = entityManager.find(Entry.class, id);
+        entityManager.remove(entry);
         return entry;
     }
 
