@@ -22,7 +22,7 @@ public class EntryService {
         return entityManager.find(Entry.class, Id);
     }
 
-    @Transactional 
+    @Transactional
     public Entry createEntry(Entry entry) {
         entityManager.persist(entry);
         return entry;
@@ -43,7 +43,7 @@ public class EntryService {
 
     @SuppressWarnings("unchecked")
     public List<Entry> findAll() {
-        var query = entityManager.createQuery("FROM Entry");
+        var query = entityManager.createQuery("FROM Entry", Entry.class);
         return query.getResultList();
     }
 }
