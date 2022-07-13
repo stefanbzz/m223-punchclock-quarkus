@@ -17,15 +17,14 @@ public class EntryService {
     public EntryService() {
     }
 
-    @Transactional 
+    @Transactional
     public Entry createEntry(Entry entry) {
         entityManager.persist(entry);
         return entry;
     }
 
-    @SuppressWarnings("unchecked")
     public List<Entry> findAll() {
-        var query = entityManager.createQuery("FROM Entry");
+        var query = entityManager.createQuery("FROM Entry", Entry.class);
         return query.getResultList();
     }
 }
