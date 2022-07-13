@@ -38,6 +38,56 @@ const indexEntries = () => {
     renderEntries();
 };
 
+const deleteEntry = (id) => {
+    fetch(`${URL}/entries/${id}`, {
+        method:'DELETE'
+    }).then(() => {
+        entries = entries.filter((entry) => entry.id !== id);
+        renderEntries();
+    });
+}
+
+const createDeleteButtonCell = (id) => {
+    const cell = document.createElement('id');
+    const button = document.createElement('button');
+    button.addEventListener('click', () => {
+        deleteEntry(id);
+    });
+    button.innerText = 'Delete';
+    cell.appendChild(button);
+    return cell;
+
+};
+
+const updateEntry = (id) => {
+    const entry = {};
+    entry['checkIn'] = dateAndTimeToDate(document.getElementById("checkIn").value, document.getElementById("checkInTime").value);
+    entry['checkOut'] = dateAndTimeToDate(document.getElementById("checkOut").value, document.getElementById("checkOutTime").value);
+    entry['id'] = id;
+    fetch(`${URL}/entries/update`,{
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(entry)
+    }).then(() => {
+        entries.splice((id-1),1);
+        entries.splice((id-1),0,entry);
+        renderEntries();
+    })
+};
+
+const createUpdateButtonCell = (id) => {
+    const cell = document.createElement("td");
+    const button = document.createElement("button");
+    button.addEventListener("click", () => {
+        updateEntry(id);
+    });
+    button.innerText = "Update";
+    cell.appendChild(button);
+    return cell;
+}
+
 const createCell = (text) => {
     const cell = document.createElement('td');
     cell.innerText = text;
@@ -52,6 +102,8 @@ const renderEntries = () => {
         row.appendChild(createCell(entry.id));
         row.appendChild(createCell(new Date(entry.checkIn).toLocaleString()));
         row.appendChild(createCell(new Date(entry.checkOut).toLocaleString()));
+        row.appendChild(createDeleteButtonCell(entry.id));
+        row.appendChild(createUpdateButtonCell(entry.id));
         display.appendChild(row);
     });
 };

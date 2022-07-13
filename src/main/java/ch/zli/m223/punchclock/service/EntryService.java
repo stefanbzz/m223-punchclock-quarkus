@@ -2,6 +2,7 @@ package ch.zli.m223.punchclock.service;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -12,11 +13,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import ch.zli.m223.punchclock.domain.Entry;
 
 @ApplicationScoped
+@RolesAllowed({ "User", "Admin" })
 public class EntryService {
     @Inject
     private EntityManager entityManager;
 
-    public EntryService() {
+    public Entry getEntryById(Long Id){
+        return entityManager.find(Entry.class, Id);
     }
 
     @Transactional 
@@ -26,9 +29,15 @@ public class EntryService {
     }
 
     @Transactional 
-    public Entry deleteEntry(long id) {
+    public void delete(long id) {
         Entry entry = entityManager.find(Entry.class, id);
         entityManager.remove(entry);
+
+    }
+
+    @Transactional 
+    public Entry updateEntity(Entry entry) {
+        entityManager.merge(entry);
         return entry;
     }
 
