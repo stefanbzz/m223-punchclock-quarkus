@@ -1,5 +1,11 @@
 # M223 Punchclock
 
+​# Kurze Projektbeschreibung
+
+Ein Mitarbeiter einer Ladenkette hat die Möglichkeit, seine Arbeitszeiten zu erfassen (wie bei alten Lochkarten). Die Einträge können von den Mitarbeitern erstellt, aktualisiert und gelöscht werden. Um die Einträge besser zu organisieren, können bestimmte Kategorien hinzugefügt werden. Der Administrator wählt das Geschlecht aus. Ein Mitarbeiter muss sich mit einem Benutzernamen und einem Passwort in sein persönliches Konto einloggen (authentifiziert durch ein JWT-Token). Diese Benutzerkonten werden vom Administrator erstellt.
+
+# Konfiguration
+
 Folgende Schritte sind notwendig um die Applikation zu erstellen und zu starten: 
 1. Stellen Sie sicher, dass OpenJDK 11 oder höher installiert und JAVA_HOME korrekt gesetzt ist.  
 2. Installieren Sie (falls noch nicht vorhanden) Apache Maven 3.8.1 oder höher
