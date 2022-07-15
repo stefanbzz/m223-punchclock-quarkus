@@ -23,6 +23,10 @@ public class CategoryController {
     CategoryService categoryService;
 
     
+    
+    /** 
+     * @return List<Category>
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "List all Categories", description = "")

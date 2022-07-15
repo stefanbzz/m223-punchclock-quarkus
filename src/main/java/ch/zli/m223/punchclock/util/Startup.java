@@ -25,6 +25,10 @@ public class Startup {
     @Inject
     CategoryService categoryService;
 
+    
+    /** 
+     * @param evt
+     */
     @Transactional
     public void loadUsers(@Observes StartupEvent evt) {
         //Create test location

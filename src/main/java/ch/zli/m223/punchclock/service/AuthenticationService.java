@@ -18,6 +18,11 @@ public class AuthenticationService {
     @Inject
     private EntityManager entityManager;
 
+    
+    /** 
+     * @param user
+     * @return boolean
+     */
     public boolean checkIfUserExists(User user){        
         var query = entityManager.createQuery("SELECT COUNT(*) FROM User WHERE username = :name AND password = :password");        
         query.setParameter("name", user.getUsername());
@@ -31,6 +36,11 @@ public class AuthenticationService {
         return false;
     }
 
+    
+    /** 
+     * @param user
+     * @return String
+     */
     public String generateValidJwtToken(User user){
         String token =
             Jwt.issuer("https://zli.ch/issuer") 

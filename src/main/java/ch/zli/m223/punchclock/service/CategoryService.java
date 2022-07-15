@@ -20,12 +20,21 @@ public class CategoryService {
     public CategoryService() {
     }
 
+    
+    /** 
+     * @param category
+     * @return Category
+     */
     @Transactional 
     public Category createCategory(Category category) {
         entityManager.persist(category);
         return category;
     }
+
     
+    /** 
+     * @return List<Category>
+     */
     @SuppressWarnings("unchecked")
     public List<Category> findAll() {
         var query = entityManager.createQuery("FROM Category");

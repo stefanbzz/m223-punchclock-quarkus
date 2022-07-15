@@ -14,18 +14,34 @@ public class Gender {
     @JsonIgnore
     private User user;
 
+
+/** 
+ * @return Long
+ */
 public Long getId() {
     return id;
 }
 
+
+/** 
+ * @param gender
+ */
 public void setGender(String gender) {
     this.gender = gender;
 }
 
+
+/** 
+ * @return String
+ */
 public String getGender() {
     return gender;
 }
 
+
+/** 
+ * @param id
+ */
 public void setId(Long id) {
     this.id = id;
 }

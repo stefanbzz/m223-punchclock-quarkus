@@ -21,6 +21,10 @@ public class UserService {
     public UserService() {
     }
 
+    
+    /** 
+     * @param user
+     */
     @Transactional 
     public void createUser(User user) {
         String pw_hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
@@ -28,6 +32,11 @@ public class UserService {
         entityManager.persist(user);
     }
 
+    
+    /** 
+     * @param user
+     * @return User
+     */
     @Transactional
     public User updateUser(User user) {
         //If the password was not set by the update, use the password of the existing user
@@ -41,6 +50,11 @@ public class UserService {
         return user;
     }
 
+    
+    /** 
+     * @param id
+     * @return User
+     */
     @Transactional
     public User deleteUser(long id) {
         User user = entityManager.find(User.class, id);
@@ -48,6 +62,11 @@ public class UserService {
         return user;
     }
 
+    
+    /** 
+     * @param username
+     * @return Optional<User>
+     */
     @Transactional 
     public Optional<User> findUser(String username) {
         return entityManager.createNamedQuery("findUserByUsername", User.class)
@@ -56,6 +75,10 @@ public class UserService {
             .findFirst();
     }
 
+    
+    /** 
+     * @return List<User>
+     */
     @SuppressWarnings("unchecked")
     public List<User> findAll() {
         var query = entityManager.createQuery("FROM User");

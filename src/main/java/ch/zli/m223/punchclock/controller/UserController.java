@@ -30,6 +30,10 @@ public class UserController {
     @Inject
     AuthenticationService authorizationService;
 
+    
+    /** 
+     * @param user
+     */
     @POST
     @Path("/signup")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -38,6 +42,11 @@ public class UserController {
       userService.createUser(user);
     }
 
+    
+    /** 
+     * @param user
+     * @return String
+     */
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)

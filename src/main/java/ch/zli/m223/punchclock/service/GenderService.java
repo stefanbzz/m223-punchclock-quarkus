@@ -12,6 +12,11 @@ public class GenderService {
     @Inject
     private EntityManager entityManager;
 
+    
+    /** 
+     * @param gender
+     * @return Gender
+     */
     @Transactional
     public Gender createGender(Gender gender) {
         entityManager.persist(gender);

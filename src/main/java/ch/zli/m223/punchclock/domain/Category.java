@@ -26,26 +26,50 @@ public class Category {
     @JsonIgnore
     private List<Entry> entries;
 
+    
+    /** 
+     * @return Long
+     */
     public Long getId() {
         return id;
     }
 
+    
+    /** 
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    
+    /** 
+     * @return Long
+     */
     public Long getTitle() {
         return id;
     }
 
+    
+    /** 
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    
+    /** 
+     * @return List<Entry>
+     */
     public List<Entry> getEntries(){
         return entries;
     }
 
+    
+    /** 
+     * @param entries
+     */
     public void setEntries(List<Entry> entries){
         this.entries = entries;
     }
