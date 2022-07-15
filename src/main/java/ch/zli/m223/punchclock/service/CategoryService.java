@@ -17,8 +17,7 @@ public class CategoryService {
     @Inject
     private EntityManager entityManager;
 
-    public CategoryService(){
-
+    public CategoryService() {
     }
 
     @Transactional 
@@ -26,14 +25,7 @@ public class CategoryService {
         entityManager.persist(category);
         return category;
     }
-
-    @Transactional 
-    public Category deleteCategory(long id) {
-        Category category = entityManager.find(Category.class, id);
-        entityManager.remove(category);
-        return category;
-    }
-
+    
     @SuppressWarnings("unchecked")
     public List<Category> findAll() {
         var query = entityManager.createQuery("FROM Category");

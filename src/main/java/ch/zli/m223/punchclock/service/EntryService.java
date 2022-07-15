@@ -8,12 +8,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-
 import ch.zli.m223.punchclock.domain.Entry;
 
 @ApplicationScoped
-@RolesAllowed({ "User", "Admin" })
 public class EntryService {
     @Inject
     private EntityManager entityManager;

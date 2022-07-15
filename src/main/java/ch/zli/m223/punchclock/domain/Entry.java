@@ -20,6 +20,10 @@ public class Entry {
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
+
     public Long getId() {
         return id;
     }
